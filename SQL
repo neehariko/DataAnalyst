@@ -1,0 +1,283 @@
+1.
+# Write your MySQL query statement below
+Select product_id 
+From Products 
+Where low_fats ='Y' And recyclable='Y' ;
+
+
+
+
+2.
+SELECT name
+FROM customer
+WHERE  referee_id!=2  ;  // this query is wrong I learned from this video the execution strategy
+
+
+Url : https://youtu.be/2aFe7fOsb8Q?feature=shared
+
+
+
+2 Right :
+SELECT name
+FROM customer
+WHERE  IFNULL(referee_id ,-1)!=2  ;
+
+
+IFNULL - TAKES 2 PARAMETERS ONLY ( ID , VALUE TO REPLACE)
+
+COALESCE - TAKES MULTIPLE PARAMETERS NOT JUST SINGLE COLUMN TO CHECK AND REPLACE FOR NULL
+
+
+
+
+3. SELECT distinct author_id as id
+FROM Views
+where author_id=viewer_id 
+order by author_id asc ;
+
+
+
+4.SELECT name , population , area
+FROM World
+Where area >= 3000000  OR population >=25000000
+
+
+5.
+CHAR_LENGTH - counts the total no.of characters in string
+Length - gives byte values
+
+# Write your MySQL query statement below
+Select tweet_id
+from Tweets
+where length(content) >15;
+
+
+https://youtu.be/2Ff_LMMhkMc?feature=shared
+
+
+
+
+
+6.
+SELECT e2.unique_id , e1.name
+FROM Employees as e1
+LEFT JOIN EmployeeUNI as e2
+ON e1.id=e2.id ;
+
+
+
+
+Q 7.
+SELECT product_name, year , price
+FROM Sales 
+JOIN  Product 
+ ON Sales.product_id= Product.product_id ;
+ 
+ 
+ 
+Url :https://youtu.be/YkS2lrzvkNc?si=1uUCSEKuEO7utTCU
+
+
+8.SELECT  v.customer_id , count(v.visit_id) as count_no_trans
+From Visits v
+LEFT JOIN Transactions t
+on v.visit_id=t.visit_id
+WHERE t.transaction_id is NULL
+Group by(v.customer_id);
+
+
+Url : https://youtu.be/neZAcG7vEm8?si=U5cdBTj108_g3hzw
+
+
+9.Select w1.id
+FROM Weather  w1
+LEFT JOIN Weather w2
+on w1.recordDate-1= w2.recordDate
+WHERE w1.temperature > w2.temperature ;
+
+
+10.
+Select w1.id
+FROM Weather  w1
+LEFT JOIN Weather w2
+on w1.recordDate-INTERVAL 1 DAY= w2.recordDate
+WHERE w1.temperature > w2.temperature ;
+
+URL : https://youtu.be/kvBjDAqEwvA?si=7wKRXudF0mgH-aJd
+
+
+
+11.
+# Write your MySQL query statement below
+SELECT a1.machine_id , (SUM(a2.timestamp -a1.timestamp ) /COUNT(*) )as processing_time
+FROM Activity a1
+LEFT JOIN Activity a2
+ON a1.machine_id = a2.machine_id
+AND a1.process_id =a2.process_id
+AND a1.timestamp <a2.timestamp
+GROUP BY a1.machine_id ;
+
+
+
+URL :  https://youtu.be/pbw8_BF6yWc?si=MFREv1Tf7YJ8JgDh
+1.
+# Write your MySQL query statement below
+Select product_id 
+From Products 
+Where low_fats ='Y' And recyclable='Y' ;
+
+
+
+
+2.
+SELECT name
+FROM customer
+WHERE  referee_id!=2  ;  // this query is wrong I learned from this video the execution strategy
+
+
+Url : https://youtu.be/2aFe7fOsb8Q?feature=shared
+
+
+
+2 Right :
+SELECT name
+FROM customer
+WHERE  IFNULL(referee_id ,-1)!=2  ;
+
+
+IFNULL - TAKES 2 PARAMETERS ONLY ( ID , VALUE TO REPLACE)
+
+COALESCE - TAKES MULTIPLE PARAMETERS NOT JUST SINGLE COLUMN TO CHECK AND REPLACE FOR NULL
+
+
+
+
+3. SELECT distinct author_id as id
+FROM Views
+where author_id=viewer_id 
+order by author_id asc ;
+
+
+
+4.SELECT name , population , area
+FROM World
+Where area >= 3000000  OR population >=25000000
+
+
+5.
+CHAR_LENGTH - counts the total no.of characters in string
+Length - gives byte values
+
+# Write your MySQL query statement below
+Select tweet_id
+from Tweets
+where length(content) >15;
+
+
+https://youtu.be/2Ff_LMMhkMc?feature=shared
+
+
+
+
+
+6.
+SELECT e2.unique_id , e1.name
+FROM Employees as e1
+LEFT JOIN EmployeeUNI as e2
+ON e1.id=e2.id ;
+
+
+
+
+Q 7.
+SELECT product_name, year , price
+FROM Sales 
+JOIN  Product 
+ ON Sales.product_id= Product.product_id ;
+ 
+ 
+ 
+Url :https://youtu.be/YkS2lrzvkNc?si=1uUCSEKuEO7utTCU
+
+
+8.SELECT  v.customer_id , count(v.visit_id) as count_no_trans
+From Visits v
+LEFT JOIN Transactions t
+on v.visit_id=t.visit_id
+WHERE t.transaction_id is NULL
+Group by(v.customer_id);
+
+
+Url : https://youtu.be/neZAcG7vEm8?si=U5cdBTj108_g3hzw
+
+
+9.Select w1.id
+FROM Weather  w1
+LEFT JOIN Weather w2
+on w1.recordDate-1= w2.recordDate
+WHERE w1.temperature > w2.temperature ;
+
+
+10.
+Select w1.id
+FROM Weather  w1
+LEFT JOIN Weather w2
+on w1.recordDate-INTERVAL 1 DAY= w2.recordDate
+WHERE w1.temperature > w2.temperature ;
+
+URL : https://youtu.be/kvBjDAqEwvA?si=7wKRXudF0mgH-aJd
+
+
+
+11.
+# Write your MySQL query statement below
+SELECT a1.machine_id , (SUM(a2.timestamp -a1.timestamp ) /COUNT(*) )as processing_time
+FROM Activity a1
+LEFT JOIN Activity a2
+ON a1.machine_id = a2.machine_id
+AND a1.process_id =a2.process_id
+AND a1.timestamp <a2.timestamp
+GROUP BY a1.machine_id ;
+
+
+
+URL :  https://youtu.be/pbw8_BF6yWc?si=MFREv1Tf7YJ8JgDh
+
+
+
+
+
+12.
+Approach No 1 :
+Select e.name as name , b.bonus as bonus
+FROM Employee as e
+Left Join Bonus as b
+ON e.empId=b.empID
+WHERE b.bonus < 1000 
+OR b.bonus is NULL ;
+
+
+Approach No 2 : Using IFNULL
+Select e.name as name , b.bonus as bonus
+FROM Employee as e
+Left Join Bonus as b
+ON e.empId=b.empID
+WHERE IFNULL(b.bonus ,0) <1000 ;
+
+
+13.
+Select e2.name as name 
+From Employee e1 inner join
+Employee e2
+on e1.managerId=e2.id
+group by(e1.managerId)
+having count(e1.managerId) >=5 ;
+
+url : https://youtu.be/DLDE-Q-ee3Y?si=NIDbj4YmYgHykUWA
+
+14.
+Select id , movie , description , rating
+From Cinema 
+Where description != 'boring'
+AND id %2 !=0
+Order by rating desc ;
