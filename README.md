@@ -1,2 +1,2 @@
 # DataAnalyst
-Learning Excel , SQL , PowerBI , Python
+Learning Excel , SQL , PowerBI , Python , Tableau
